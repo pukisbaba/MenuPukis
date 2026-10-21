@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kue Pukis Baba - Pemesanan Online</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cappuccino: {
+                50: "#FDFBF7",
+                100: "#F7F1E5",
+                200: "#EADBC8",
+                300: "#DAC0A3",
+                400: "#C6A982",
+                500: "#B08968",
+                600: "#9C6644",
+                700: "#7F4F24",
+                800: "#582F0E",
+                900: "#3A1E08",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <!-- FontAwesome Icon CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f7f1e5;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #b08968;
+        border-radius: 4px;
+      }
+      /* Menghilangkan panah spinner pada input type number */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-cappuccino-50 text-cappuccino-900 font-sans antialiased min-h-screen flex flex-col"
+  >
+    <!-- ========================================== -->
+    <!-- SIDE NAVIGATION / DRAWER MENU (Garis 3)   -->
+    <!-- ========================================== -->
+    <div
+      id="sideDrawerOverlay"
+      class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+      onclick="toggleSidebar(false)"
+    ></div>
+
+    <aside
+      id="sideDrawer"
+      class="fixed top-0 left-0 z-50 h-full w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
+    >
+      <div>
+        <!-- Drawer Header -->
+        <div
+          class="p-5 border-b border-cappuccino-100 flex items-center justify-between"
+        >
+          <h2 class="font-bold text-lg text-cappuccino-900 tracking-wider">
+            KUE PUKIS BABA
+          </h2>
+          <button
+            onclick="toggleSidebar(false)"
+            class="text-cappuccino-600 hover:text-cappuccino-800 p-1 rounded-lg transition"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Drawer Links -->
+        <nav class="p-4 space-y-1">
+          <a
+            href="javascript:void(0)"
+            onclick="
+              toggleSidebar(false);
+              showLanding();
+            "
+            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 hover:text-cappuccino-900 rounded-xl font-medium transition text-sm"
+          >
+            <i class="fas fa-home w-6 text-cappuccino-600"></i>
+            <span>Main Page (Landing)</span>
+          </a>
+          <a
+            href="javascript:void(0)"
+            onclick="
+              toggleSidebar(false);
+              enterMenu();
+            "
+            class="flex items-center px-4 py-3 text-cappuccino-700 bg-cappuccino-100 font-semibold rounded-xl transition text-sm"
+          >
+            <i class="fas fa-utensils w-6 text-cappuccino-600"></i>
+            <span>Daftar Menu</span>
+          </a>
+          <a
+            href="javascript:void(0)"
+            onclick="
+              toggleSidebar(false);
+              showToast('Fitur Ulasan Segera Hadir!');
+            "
+            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 hover:text-cappuccino-900 rounded-xl font-medium transition text-sm"
+          >
+            <i class="fas fa-star w-6 text-cappuccino-600"></i>
+            <span>Customer Reviews</span>
+          </a>
+          <a
+            href="javascript:void(0)"
+            onclick="
+              toggleSidebar(false);
+              openAboutModal();
+            "
+            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 hover:text-cappuccino-900 rounded-xl font-medium transition text-sm"
+          >
+            <i class="fas fa-info-circle w-6 text-cappuccino-600"></i>
+            <span>About Us</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div
+        class="p-4 border-t border-cappuccino-100 text-center text-xs text-cappuccino-500"
+      >
+        &copy; 2026 Kue Pukis Baba
+      </div>
+    </aside>
+
+    <!-- ========================================== -->
+    <!-- 1. HALAMAN AWAL / LANDING SCREEN (LOGO)   -->
+    <!-- ========================================== -->
+    <div
+      id="landingScreen"
+      class="fixed inset-0 z-40 flex flex-col items-center justify-center text-white p-6 transition-all duration-500 overflow-hidden"
+    >
+      <!-- Gambar Background dengan efek Blur & Dark Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src="c:\Users\adhitya saniarizky\Downloads\WhatsApp Image 2026-10-21 at 17.35.51.jpeg"
+          alt="Background Makanan"
+          class="w-full h-full object-cover filter blur-sm scale-105"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-cappuccino-900/80 via-cappuccino-900/70 to-cappuccino-900/90"
+        ></div>
+      </div>
+
+      <!-- Konten Landing Screen -->
+      <div
+        class="relative z-10 text-center max-w-md cursor-pointer group"
+        onclick="enterMenu()"
+      >
+        <!-- Logo Gambar -->
+        <div
+          class="relative w-44 h-44 mx-auto mb-6 rounded-full bg-cappuccino-100/20 p-2.5 backdrop-blur-md shadow-2xl transition transform group-hover:scale-105 group-active:scale-95 duration-300 border-2 border-cappuccino-200/40"
+        >
+          <img
+            src="c:\Users\adhitya saniarizky\Downloads\WhatsApp Image 2026-10-21 at 17.01.06.jpeg"
+            alt="Logo Restoran"
+            class="w-full h-full object-cover rounded-full border-4 border-cappuccino-500 shadow-inner"
+          />
+          <div
+            class="absolute inset-0 rounded-full bg-cappuccino-900/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"
+          >
+            <span
+              class="bg-cappuccino-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
+            >
+              Klik untuk Masuk
+            </span>
+          </div>
+        </div>
+        <h1
+          class="text-3xl font-extrabold tracking-wide mb-2 text-cappuccino-100 drop-shadow-md"
+        >
+          Kue Pukis Baba
+        </h1>
+        <p class="text-cappuccino-200 text-sm mb-8 drop-shadow">
+          Pesan makanan favoritmu dengan cepat dan mudah!
+        </p>
+        <button
+          class="bg-cappuccino-100 text-cappuccino-800 font-bold px-8 py-3.5 rounded-full shadow-xl hover:bg-white transition duration-300 transform group-hover:translate-y-[-2px] flex items-center justify-center mx-auto space-x-2"
+        >
+          <span>Lihat Menu Makanan</span>
+          <i class="fas fa-arrow-right text-cappuccino-600"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 2. NAVBAR                                 -->
+    <!-- ========================================== -->
+    <header
+      class="sticky top-0 z-30 bg-white/95 backdrop-blur-md shadow-sm border-b border-cappuccino-200"
+    >
+      <div
+        class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center space-x-3">
+          <!-- Tombol Garis Tiga (Sidebar Hamburger) -->
+          <button
+            onclick="toggleSidebar(true)"
+            class="w-10 h-10 rounded-xl bg-cappuccino-100 text-cappuccino-800 flex items-center justify-center hover:bg-cappuccino-200 transition border border-cappuccino-200"
+            title="Buka Menu"
+          >
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+
+          <div
+            class="flex items-center space-x-2.5 cursor-pointer"
+            onclick="showLanding()"
+          >
+            <img
+              src="c:\Users\adhitya saniarizky\Downloads\WhatsApp Image 2026-10-21 at 17.01.06.jpeg"
+              alt="Logo"
+              class="w-10 h-10 rounded-full object-cover border-2 border-cappuccino-500"
+            />
+            <div>
+              <h2 class="font-bold text-cappuccino-900 text-base leading-tight">
+                Kue Pukis Baba
+              </h2>
+              <p class="text-xs text-cappuccino-600">
+                Pesan Online Spesial Makanan
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onclick="openCartModal()"
+          class="relative bg-cappuccino-600 hover:bg-cappuccino-700 text-white px-4 py-2 rounded-xl flex items-center space-x-2 transition shadow-md"
+        >
+          <i class="fas fa-shopping-basket text-lg"></i>
+          <span class="font-semibold text-sm hidden sm:inline">Keranjang</span>
+          <span
+            id="cartBadge"
+            class="bg-cappuccino-100 text-cappuccino-800 text-xs font-bold px-2 py-0.5 rounded-full shadow"
+            >0</span
+          >
+        </button>
+      </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 3. HALAMAN UTAMA / MENU MAKANAN           -->
+    <!-- ========================================== -->
+    <main class="max-w-2xl mx-auto px-4 py-6 flex-grow w-full">
+      <!-- Banner / Header Menu -->
+      <div
+        class="mb-5 bg-white rounded-2xl p-4 shadow-sm border border-cappuccino-200 flex flex-col md:flex-row items-center justify-between gap-3"
+      >
+        <div class="w-full md:w-auto">
+          <h2 class="text-lg font-bold text-cappuccino-900">
+            Daftar Menu Makanan
+          </h2>
+          <p class="text-xs text-cappuccino-600">
+            Pilih menu favoritmu di bawah ini (Minimal pemesanan 10 item)
+          </p>
+        </div>
+        <!-- Pencarian -->
+        <div class="relative w-full md:w-64">
+          <input
+            type="text"
+            id="searchInput"
+            oninput="filterMenu()"
+            placeholder="Cari menu makanan..."
+            class="w-full pl-9 pr-4 py-2 rounded-xl text-cappuccino-900 bg-cappuccino-50 border border-cappuccino-200 focus:outline-none focus:ring-2 focus:ring-cappuccino-500 text-sm"
+          />
+          <i
+            class="fas fa-search absolute left-3 top-2.5 text-cappuccino-400 text-sm"
+          ></i>
+        </div>
+      </div>
+
+      <!-- Daftar Makanan -->
+      <div id="menuContainer" class="space-y-4">
+        <!-- Render oleh JS -->
+      </div>
+    </main>
+
+    <!-- Floating Bar Keranjang -->
+    <div
+      id="floatingCart"
+      class="fixed bottom-4 left-4 right-4 max-w-md mx-auto bg-cappuccino-900 text-white rounded-2xl p-4 shadow-2xl flex items-center justify-between z-20 transform translate-y-28 transition-transform duration-300 border border-cappuccino-800"
+    >
+      <div class="flex items-center space-x-3">
+        <div class="bg-cappuccino-600 p-2.5 rounded-xl">
+          <i class="fas fa-shopping-bag text-lg text-white"></i>
+        </div>
+        <div>
+          <p class="text-xs text-cappuccino-300" id="floatQty">
+            0 Item dipilih
+          </p>
+          <p class="font-bold text-cappuccino-200 text-base" id="floatTotal">
+            Rp 0
+          </p>
+        </div>
+      </div>
+      <button
+        onclick="openCartModal()"
+        class="bg-cappuccino-600 hover:bg-cappuccino-700 text-white font-bold px-5 py-2.5 rounded-xl transition text-sm flex items-center space-x-2 shadow"
+      >
+        <span>Checkout</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 4. MODAL KERANJANG & FORM CHECKOUT        -->
+    <!-- ========================================== -->
+    <div
+      id="cartModal"
+      class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+      >
+        <!-- Modal Header -->
+        <div
+          class="p-4 border-b border-cappuccino-100 flex justify-between items-center bg-cappuccino-50"
+        >
+          <h3
+            class="text-lg font-bold text-cappuccino-900 flex items-center space-x-2"
+          >
+            <i class="fas fa-shopping-cart text-cappuccino-600"></i>
+            <span>Keranjang & Checkout</span>
+          </h3>
+          <button
+            onclick="closeCartModal()"
+            class="text-cappuccino-400 hover:text-cappuccino-600 p-1"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+
+        <!-- Modal Content (Scrollable) -->
+        <div class="p-5 overflow-y-auto space-y-6 custom-scrollbar flex-grow">
+          <!-- Daftar Item Keranjang -->
+          <div>
+            <h4 class="font-semibold text-cappuccino-800 text-sm mb-3">
+              Item Pesanan:
+            </h4>
+            <div id="cartItemsList" class="space-y-3">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Form Data Pembeli -->
+          <div class="border-t border-cappuccino-100 pt-4 space-y-3">
+            <h4 class="font-semibold text-cappuccino-800 text-sm">
+              Informasi Pemesan:
+            </h4>
+            <div>
+              <label class="block text-xs text-cappuccino-700 mb-1"
+                >Nama Lengkap *</label
+              >
+              <input
+                type="text"
+                id="custName"
+                placeholder="Contoh: Adhitya"
+                class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
+              />
+            </div>
+
+            <!-- Opsi Packing / Kemasan -->
+            <div>
+              <label class="block text-xs text-cappuccino-700 mb-1"
+                >Opsi Kemasan / Packing *</label
+              >
+              <select
+                id="packingOption"
+                onchange="updateCartUI()"
+                class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
+              >
+                <option value="0|Plastik (Gratis)">Plastik (Gratis)</option>
+                <option value="2000|Dus Isi 10 Pcs (Rp 2.000)">
+                  Dus Isi 10 Pcs (+Rp 2.000)
+                </option>
+                <option value="3000|Dus Isi 20 Pcs (Rp 3.000)">
+                  Dus Isi 20 Pcs (+Rp 3.000)
+                </option>
+                <option value="3000|Dus Isi 25 Pcs (Rp 3.000)">
+                  Dus Isi 25 Pcs (+Rp 3.000)
+                </option>
+                <option value="3000|Dus Isi 30 Pcs (Rp 3.000)">
+                  Dus Isi 30 Pcs (+Rp 3.000)
+                </option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs text-cappuccino-700 mb-1"
+                >Opsi Pesanan *</label
+              >
+              <select
+                id="orderType"
+                class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
+              >
+                <option value="Pick Up (Ambil Sendiri di Outlet)">
+                Ambil Sendiri di Outlet
+                </option>
+                <option value="Pick Up Sendiri (Kurir Pribadi/Ojol)">
+                  Pick Up Sendiri (Kurir Pribadi/Ojol)
+                </option>
+              </select>
+            </div>
+
+            <!-- Tanggal & Jam Pengambilan -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs text-cappuccino-700 mb-1"
+                  >Tanggal Pengambilan *</label
+                >
+                <input
+                  type="date"
+                  id="pickupDate"
+                  class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50 text-cappuccino-900"
+                />
+              </div>
+              <div>
+                <label class="block text-xs text-cappuccino-700 mb-1"
+                  >Jam Pengambilan *</label
+                >
+                <input
+                  type="time"
+                  id="pickupTime"
+                  class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50 text-cappuccino-900"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs text-cappuccino-700 mb-1"
+                >Metode Pembayaran</label
+              >
+              <select
+                id="paymentMethod"
+                class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
+              >
+                <option value="QRIS">QRIS</option>
+                <option value="Transfer">E-Wallet / Transfer Bank</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs text-cappuccino-700 mb-1"
+                >Catatan Tambahan (Opsional)</label
+              >
+              <textarea
+                id="custNotes"
+                rows="2"
+                placeholder="Contoh: Tanpa topping, tanpa olesan margarin..."
+                class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div
+          class="p-4 border-t border-cappuccino-100 bg-cappuccino-50 flex flex-col space-y-3"
+        >
+          <div class="flex justify-between items-center text-cappuccino-900">
+            <span class="font-medium text-sm">Total Pembayaran:</span>
+            <span
+              id="cartModalTotal"
+              class="text-xl font-bold text-cappuccino-700"
+              >Rp 0</span
+            >
+          </div>
+          <button
+            onclick="processCheckout()"
+            class="w-full bg-cappuccino-600 hover:bg-cappuccino-700 text-white font-bold py-3 rounded-xl transition shadow-md flex items-center justify-center space-x-2"
+          >
+            <i class="fas fa-check-circle"></i>
+            <span>Selesaikan & Buat Catatan Pesanan</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 5. MODAL STRUK / CATATAN PESANAN Selesai   -->
+    <!-- ========================================== -->
+    <div
+      id="receiptModal"
+      class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-md w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"
+      >
+        <div class="bg-cappuccino-700 p-4 text-white text-center relative">
+          <div
+            class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-2"
+          >
+            <i class="fas fa-receipt text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-bold">Catatan Pesanan Siap!</h3>
+          <p class="text-xs text-cappuccino-200">
+            Disertai jam & menit pesanan
+          </p>
+        </div>
+
+        <div class="p-4 overflow-y-auto flex-grow custom-scrollbar">
+          <!-- Tampilan Preview Struk / Note -->
+          <div
+            class="bg-cappuccino-50 border border-cappuccino-200 rounded-xl p-4 font-mono text-xs text-cappuccino-900 leading-relaxed"
+          >
+            <pre id="receiptText" class="whitespace-pre-wrap font-mono"></pre>
+          </div>
+        </div>
+
+        <div
+          class="p-4 border-t border-cappuccino-100 bg-cappuccino-50 space-y-2"
+        >
+          <!-- Tombol Salin Clipboard -->
+          <button
+            onclick="copyToClipboard()"
+            class="w-full bg-cappuccino-800 hover:bg-cappuccino-900 text-white font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2 text-sm shadow"
+          >
+            <i class="fas fa-copy"></i>
+            <span>Salin Catatan ke Clipboard</span>
+          </button>
+
+          <!-- Tombol Kirim WhatsApp -->
+          <button
+            onclick="sendToWhatsApp()"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2 text-sm shadow-md"
+          >
+            <i class="fab fa-whatsapp text-lg"></i>
+            <span>Kirim Pesanan via WhatsApp</span>
+          </button>
+
+          <button
+            onclick="closeReceiptModal()"
+            class="w-full text-center text-xs text-cappuccino-600 hover:text-cappuccino-800 py-1"
+          >
+            Tutup & Kembali ke Menu
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 6. MODAL ABOUT US                          -->
+    <!-- ========================================== -->
+    <div
+      id="aboutModal"
+      class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-md w-full flex flex-col shadow-2xl overflow-hidden"
+      >
+        <div
+          class="p-4 border-b border-cappuccino-100 flex justify-between items-center bg-cappuccino-50"
+        >
+          <h3
+            class="text-lg font-bold text-cappuccino-900 flex items-center space-x-2"
+          >
+            <i class="fas fa-info-circle text-cappuccino-600"></i>
+            <span>About Us</span>
+          </h3>
+          <button
+            onclick="closeAboutModal()"
+            class="text-cappuccino-400 hover:text-cappuccino-600 p-1"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <div class="p-6 text-center space-y-4">
+          <div
+            class="w-20 h-20 mx-auto rounded-full bg-cappuccino-100 p-1 border-2 border-cappuccino-500 shadow"
+          >
+            <img
+              src="c:\Users\adhitya saniarizky\Downloads\WhatsApp Image 2026-10-21 at 17.01.06.jpeg"
+              alt="Logo Pukis Baba"
+              class="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          <h4 class="font-bold text-cappuccino-900 text-xl">Kue Pukis Baba</h4>
+          <div
+            class="bg-cappuccino-50 border border-cappuccino-200 rounded-xl p-4 text-left text-sm text-cappuccino-800 leading-relaxed space-y-3"
+          >
+            <p>
+              <i class="fas fa-check-circle text-cappuccino-600 mr-1.5"></i>
+              Kami tidak memakai Gula Biang/ Pemanis buatan jadi aman di
+              Tenggorokan & di Perut.
+            </p>
+            <p>
+              <i class="fas fa-check-circle text-cappuccino-600 mr-1.5"></i>
+              Di konsumsi anak anak aman, mau polosan tanpa Topping boleh bgt
+              tinggal Request.
+            </p>
+            <p>
+              <i class="fas fa-check-circle text-cappuccino-600 mr-1.5"></i>
+              Di konsumsi orang tua juga aman, gk mau pakai Olesan Margarin?
+              Boleh juga tinggal Request saja.
+            </p>
+          </div>
+        </div>
+        <div
+          class="p-4 border-t border-cappuccino-100 bg-cappuccino-50 text-center"
+        >
+          <button
+            onclick="closeAboutModal()"
+            class="w-full bg-cappuccino-600 hover:bg-cappuccino-700 text-white font-bold py-2.5 rounded-xl transition"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed top-5 right-5 z-50 bg-cappuccino-900 text-white px-4 py-3 rounded-xl shadow-2xl hidden flex items-center space-x-2 text-sm transition-all duration-300 border border-cappuccino-700"
+    >
+      <i class="fas fa-info-circle text-cappuccino-300"></i>
+      <span id="toastMsg">Notifikasi</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- LOGIC JAVASCRIPT                           -->
+    <!-- ========================================== -->
+    <script>
+      const RESTO_WA_NUMBER = "6285759470044";
+
+      const menuData = [
+        {
+          id: 1,
+          name: "PUKIS ORIGINAL",
+          price: 1000,
+          sales: "10RB+",
+          likes: "350",
+          bestSeller: true,
+          desc: "Adonan yang dibuat tanpa campuran apapun",
+          img: "ori.jpeg",
+        },
+        {
+          id: 2,
+          name: "PUKIS MESES",
+          price: 1000,
+          sales: "10RB+",
+          likes: "312",
+          bestSeller: true,
+          desc: "Kue dengan taburan meses di atasnya",
+          img: "meses.jpeg",
+        },
+        {
+          id: 3,
+          name: "PUKIS MOCCA",
+          price: 1000,
+          sales: "9RB+",
+          likes: "200",
+          bestSeller: false,
+          desc: "Adonan dengan rasa manis dan harum mocca",
+          img: "mocca.jpeg",
+        },
+        {
+          id: 4,
+          name: "PUKIS REDVELVET",
+          price: 1000,
+          sales: "7RB+",
+          likes: "99",
+          bestSeller: false,
+          desc: "Kue yang terlihat cantik merah merona",
+          img: "redvel.jpeg",
+        },
+        {
+          id: 5,
+          name: "PUKIS PANDAN",
+          price: 1000,
+          sales: "8RB+",
+          likes: "133",
+          bestSeller: false,
+          desc: "Adonan dengan warna hijau dan wangi aroma pandan",
+          img: "pandan.jpeg",
+        },
+        {
+          id: 6,
+          name: "PUKIS KEJU",
+          price: 1000,
+          sales: "9RB+",
+          likes: "180",
+          bestSeller: false,
+          desc: "Cocok buat kamu yang suka dengan rasa gurihnya taburan keju",
+          img: "keju.jpeg",
+        },
+      ];
+
+      let cart = {};
+      let generatedFormattedOrder = "";
+
+      // Inisialisasi tanggal default (Hari ini)
+      function initDefaultDate() {
+        const today = new Date().toISOString().split("T")[0];
+        const dateInput = document.getElementById("pickupDate");
+        if (dateInput && !dateInput.value) {
+          dateInput.value = today;
+        }
+      }
+
+      // Fungsi Drawer Sidebar
+      function toggleSidebar(open) {
+        const drawer = document.getElementById("sideDrawer");
+        const overlay = document.getElementById("sideDrawerOverlay");
+        if (open) {
+          drawer.classList.remove("-translate-x-full");
+          overlay.classList.remove("opacity-0", "pointer-events-none");
+        } else {
+          drawer.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0", "pointer-events-none");
+        }
+      }
+
+      // Fungsi Modal About Us
+      function openAboutModal() {
+        document.getElementById("aboutModal").classList.remove("hidden");
+      }
+
+      function closeAboutModal() {
+        document.getElementById("aboutModal").classList.add("hidden");
+      }
+
+      function formatRupiah(number) {
+        return (
+          "Rp" +
+          new Intl.NumberFormat("id-ID", { maximumFractionDigits: 0 }).format(
+            number,
+          )
+        );
+      }
+
+      function enterMenu() {
+        document
+          .getElementById("landingScreen")
+          .classList.add("opacity-0", "pointer-events-none");
+      }
+
+      function showLanding() {
+        document
+          .getElementById("landingScreen")
+          .classList.remove("opacity-0", "pointer-events-none");
+      }
+
+      function renderMenu() {
+        const container = document.getElementById("menuContainer");
+        const searchVal = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        container.innerHTML = "";
+
+        const filtered = menuData.filter((item) => {
+          return (
+            item.name.toLowerCase().includes(searchVal) ||
+            item.desc.toLowerCase().includes(searchVal)
+          );
+        });
+
+        if (filtered.length === 0) {
+          container.innerHTML = `
+            <div class="text-center py-12 text-cappuccino-400 bg-white rounded-2xl border border-cappuccino-200">
+                <i class="fas fa-utensils text-4xl mb-2"></i>
+                <p class="text-sm">Makanan tidak ditemukan</p>
+            </div>
+          `;
+          return;
+        }
+
+        filtered.forEach((item) => {
+          const qty = cart[item.id] || 0;
+          const card = document.createElement("div");
+          card.className =
+            "bg-white rounded-2xl p-3 border border-cappuccino-200 shadow-sm flex items-center space-x-3 hover:shadow-md transition";
+
+          card.innerHTML = `
+            <div class="relative w-28 h-28 flex-shrink-0 rounded-xl overflow-hidden bg-cappuccino-100">
+                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover">
+                ${
+                  item.bestSeller
+                    ? `
+                    <div class="absolute bottom-0 left-0 right-0 bg-cappuccino-700 text-white text-[10px] font-bold text-center py-0.5">
+                        Terlaris
+                    </div>
+                `
+                    : ""
+                }
+            </div>
+
+            <div class="flex-grow flex flex-col justify-between h-28 py-0.5">
+                <div>
+                    <h3 class="font-bold text-cappuccino-900 text-sm leading-tight">${item.name}</h3>
+                    <p class="text-[11px] text-cappuccino-600 mt-1 line-clamp-1">${item.desc}</p>
+                    <div class="flex items-center space-x-2 text-[10px] text-cappuccino-400 mt-1">
+                        <span>${item.sales} terjual</span>
+                        <span>|</span>
+                        <span>Disukai oleh ${item.likes}</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between mt-2">
+                    <span class="text-cappuccino-700 font-extrabold text-sm">${formatRupiah(item.price)}</span>
+
+                    <div>
+                        ${
+                          qty === 0
+                            ? `
+                            <button onclick="updateQty(${item.id}, 1)" class="w-8 h-8 rounded-lg bg-cappuccino-600 text-white font-bold text-lg flex items-center justify-center hover:bg-cappuccino-700 active:scale-95 transition">
+                                +
+                            </button>
+                        `
+                            : `
+                            <div class="flex items-center space-x-1 border border-cappuccino-400 rounded-lg p-0.5 bg-cappuccino-50">
+                                <button onclick="updateQty(${item.id}, -1)" class="w-7 h-7 rounded bg-white text-cappuccino-700 font-bold border border-cappuccino-200 flex items-center justify-center hover:bg-cappuccino-100 active:scale-95 text-xs leading-none">
+                                    <span class="inline-block transform -translate-y-[1px]">-</span>
+                                </button>
+                                <input type="number" min="0" value="${qty}" oninput="setDirectQty(${item.id}, this.value)" class="w-8 text-center font-bold text-xs text-cappuccino-900 bg-transparent focus:outline-none focus:bg-white rounded py-1">
+                                <button onclick="updateQty(${item.id}, 1)" class="w-7 h-7 rounded bg-cappuccino-600 text-white font-bold flex items-center justify-center hover:bg-cappuccino-700 active:scale-95 text-xs">
+                                    +
+                                </button>
+                            </div>
+                        `
+                        }
+                    </div>
+                </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      function filterMenu() {
+        renderMenu();
+      }
+
+      function updateQty(id, change) {
+        if (!cart[id]) cart[id] = 0;
+        cart[id] += change;
+        if (cart[id] <= 0) delete cart[id];
+
+        updateCartUI();
+        renderMenu();
+      }
+
+      function setDirectQty(id, val) {
+        const parsedVal = parseInt(val, 10);
+        if (isNaN(parsedVal) || parsedVal <= 0) {
+          delete cart[id];
+        } else {
+          cart[id] = parsedVal;
+        }
+        updateCartUI();
+      }
+
+      function getTotalCartQty() {
+        let total = 0;
+        Object.keys(cart).forEach((id) => {
+          total += cart[id] || 0;
+        });
+        return total;
+      }
+
+      function updateCartUI() {
+        let totalQty = 0;
+        let totalPrice = 0;
+
+        Object.keys(cart).forEach((id) => {
+          const qty = cart[id];
+          const item = menuData.find((m) => m.id == id);
+          if (item) {
+            totalQty += qty;
+            totalPrice += item.price * qty;
+          }
+        });
+
+        // Hitung biaya packing yang dipilih
+        const packingElem = document.getElementById("packingOption");
+        let packingCost = 0;
+        if (packingElem) {
+          const packingVal = packingElem.value.split("|")[0];
+          packingCost = parseInt(packingVal, 10) || 0;
+        }
+
+        const grandTotal = totalPrice + packingCost;
+
+        document.getElementById("cartBadge").innerText = totalQty;
+        document.getElementById("floatQty").innerText =
+          `${totalQty} Item dipilih`;
+        document.getElementById("floatTotal").innerText =
+          formatRupiah(grandTotal);
+        document.getElementById("cartModalTotal").innerText =
+          formatRupiah(grandTotal);
+
+        const floatCart = document.getElementById("floatingCart");
+        if (totalQty > 0) {
+          floatCart.classList.remove("translate-y-28");
+        } else {
+          floatCart.classList.add("translate-y-28");
+        }
+      }
+
+      function openCartModal() {
+        renderCartItems();
+        initDefaultDate();
+        updateCartUI();
+        document.getElementById("cartModal").classList.remove("hidden");
+      }
+
+      function closeCartModal() {
+        document.getElementById("cartModal").classList.add("hidden");
+      }
+
+      function renderCartItems() {
+        const list = document.getElementById("cartItemsList");
+        list.innerHTML = "";
+
+        const keys = Object.keys(cart);
+        if (keys.length === 0) {
+          list.innerHTML = `<p class="text-xs text-cappuccino-500 text-center py-4">Belum ada menu yang dipilih.</p>`;
+          return;
+        }
+
+        keys.forEach((id) => {
+          const qty = cart[id];
+          const item = menuData.find((m) => m.id == id);
+          if (item) {
+            const itemRow = document.createElement("div");
+            itemRow.className =
+              "flex justify-between items-center bg-cappuccino-50 p-2.5 rounded-xl border border-cappuccino-200 text-xs";
+            itemRow.innerHTML = `
+              <div>
+                <p class="font-bold text-cappuccino-900">${item.name}</p>
+                <p class="text-cappuccino-600">${formatRupiah(item.price)} x ${qty}</p>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="font-bold text-cappuccino-800">${formatRupiah(item.price * qty)}</span>
+                <div class="flex items-center space-x-1 border border-cappuccino-300 rounded bg-white p-0.5">
+                  <button onclick="updateQty(${item.id}, -1); renderCartItems();" class="w-5 h-5 rounded text-cappuccino-700 font-bold flex items-center justify-center hover:bg-cappuccino-100 text-xs leading-none">
+                    <span class="inline-block transform -translate-y-[1px]">-</span>
+                  </button>
+                  <input type="number" min="0" value="${qty}" oninput="setDirectQty(${item.id}, this.value); renderCartItems();" class="w-7 text-center font-bold text-xs text-cappuccino-900 bg-transparent focus:outline-none focus:bg-cappuccino-50 rounded py-0.5">
+                  <button onclick="updateQty(${item.id}, 1); renderCartItems();" class="w-5 h-5 rounded bg-cappuccino-600 text-white font-bold flex items-center justify-center hover:bg-cappuccino-700 text-xs">
+                    +
+                  </button>
+                </div>
+              </div>
+            `;
+            list.appendChild(itemRow);
+          }
+        });
+      }
+
+      function processCheckout() {
+        const totalItems = getTotalCartQty();
+
+        if (totalItems === 0) {
+          showToast("Keranjang Anda masih kosong!");
+          return;
+        }
+
+        if (totalItems < 10) {
+          showToast("Minimal pemesanan adalah 10 item!");
+          return;
+        }
+
+        const name = document.getElementById("custName").value.trim();
+        const orderType = document.getElementById("orderType").value;
+        const pickupDate = document.getElementById("pickupDate").value;
+        const pickupTime = document.getElementById("pickupTime").value;
+        const payment = document.getElementById("paymentMethod").value;
+        const notes = document.getElementById("custNotes").value.trim();
+
+        // Ambil Opsi Packing
+        const packingRaw = document.getElementById("packingOption").value;
+        const [packingCostStr, packingName] = packingRaw.split("|");
+        const packingCost = parseInt(packingCostStr, 10) || 0;
+
+        if (!name) {
+          showToast("Harap isi Nama Lengkap!");
+          return;
+        }
+
+        if (!pickupDate || !pickupTime) {
+          showToast("Harap isi Tanggal & Jam Pengambilan!");
+          return;
+        }
+
+        // Format tanggal tampilan
+        const dateObj = new Date(pickupDate);
+        const formattedPickupDate = dateObj.toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+
+        const now = new Date();
+        const timeStr = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")} WIB`;
+        const dateStr = now.toLocaleDateString("id-ID", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+
+        let foodSubtotal = 0;
+        let itemsSummary = "";
+
+        Object.keys(cart).forEach((id) => {
+          const qty = cart[id];
+          const item = menuData.find((m) => m.id == id);
+          if (item) {
+            const subtotal = item.price * qty;
+            foodSubtotal += subtotal;
+            itemsSummary += `- ${item.name} x${qty} : ${formatRupiah(subtotal)}\n`;
+          }
+        });
+
+        const grandTotal = foodSubtotal + packingCost;
+
+        generatedFormattedOrder = `============================
+      KUE PUKIS BABA      
+============================
+Tgl Pesan : ${dateStr}
+Wkt Pesan : ${timeStr}
+----------------------------
+NAMA PEMESAN :
+${name}
+
+OPSI PESANAN :
+${orderType}
+
+JADWAL PENGAMBILAN :
+Tanggal : ${formattedPickupDate}
+Jam     : ${pickupTime} WIB
+
+KEMASAN / PACKING :
+${packingName}
+
+METODE BAYAR :
+${payment}
+----------------------------
+DETAIL PESANAN :
+${itemsSummary}
+PACKING      : ${formatRupiah(packingCost)}
+----------------------------
+TOTAL BAYAR  : ${formatRupiah(grandTotal)}
+----------------------------
+CATATAN TAMBAHAN :
+${notes ? notes : "-"}
+============================
+Terima kasih telah memesan!`;
+
+        document.getElementById("receiptText").innerText =
+          generatedFormattedOrder;
+        closeCartModal();
+        document.getElementById("receiptModal").classList.remove("hidden");
+      }
+
+      function closeReceiptModal() {
+        document.getElementById("receiptModal").classList.add("hidden");
+      }
+
+      function copyToClipboard() {
+        if (!generatedFormattedOrder) return;
+        navigator.clipboard
+          .writeText(generatedFormattedOrder)
+          .then(() => {
+            showToast("Catatan pesanan berhasil disalin!");
+          })
+          .catch(() => {
+            showToast("Gagal menyalin catatan.");
+          });
+      }
+
+      function sendToWhatsApp() {
+        if (!generatedFormattedOrder) return;
+        const encodedText = encodeURIComponent(generatedFormattedOrder);
+        const waUrl = `https://api.whatsapp.com/send?phone=${RESTO_WA_NUMBER}&text=${encodedText}`;
+        window.open(waUrl, "_blank");
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        document.getElementById("toastMsg").innerText = msg;
+        toast.classList.remove("hidden");
+        setTimeout(() => {
+          toast.classList.add("hidden");
+        }, 3000);
+      }
+
+      // Inisialisasi awal
+      renderMenu();
+      updateCartUI();
+    </script>
+  </body>
+</html>
