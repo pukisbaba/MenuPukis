@@ -650,7 +650,7 @@
           sales: "10RB+",
           likes: "350",
           bestSeller: true,
-          desc: "Adonan yang dibuat tanpa campuran apapun",
+          desc: "Kue pukis jadul yang empuk dengan lapisan gurih dari olesan Margarin, pas banget buat kamu yang gk terlalu suka manis. cocok dihidangkan dengan kopi. Nikmati setiap gigitannya!",
           img: "ori.jpeg",
         },
         {
@@ -702,6 +702,16 @@
           bestSeller: false,
           desc: "Cocok buat kamu yang suka dengan rasa gurihnya taburan keju",
           img: "keju.jpeg",
+        },
+         {
+          id: 6,
+          name: "PUKIS OREO",
+          price: 1000,
+          sales: "10RB+",
+          likes: "172",
+          bestSeller: false,
+          desc: "Rasakan kue pukis dengan taburan oreo yang melimpah",
+          img: "oreo.jpeg",
         },
       ];
 
@@ -1033,37 +1043,31 @@
 
         const grandTotal = foodSubtotal + packingCost;
 
-        generatedFormattedOrder = `============================
-      KUE PUKIS BABA      
-============================
-Tgl Pesan : ${dateStr}
-Wkt Pesan : ${timeStr}
-----------------------------
+        generatedFormattedOrder = `===================================
+          KUE PUKIS BABA      
+===================================
+Tgl & Waktu : ${dateStr} ${timeStr}
+-----------------------------------
 NAMA PEMESAN :
 ${name}
-
 OPSI PESANAN :
 ${orderType}
-
 JADWAL PENGAMBILAN :
 Tanggal : ${formattedPickupDate}
 Jam     : ${pickupTime} WIB
-
-KEMASAN / PACKING :
-${packingName}
-
-METODE BAYAR :
-${payment}
-----------------------------
+-----------------------------------
 DETAIL PESANAN :
 ${itemsSummary}
+KEMASAN / PACKING :
+${packingName}
 PACKING      : ${formatRupiah(packingCost)}
-----------------------------
+-----------------------------------
 TOTAL BAYAR  : ${formatRupiah(grandTotal)}
-----------------------------
+METODE BAYAR : ${payment}
+-----------------------------------
 CATATAN TAMBAHAN :
 ${notes ? notes : "-"}
-============================
+===================================
 Terima kasih telah memesan!`;
 
         document.getElementById("receiptText").innerText =
