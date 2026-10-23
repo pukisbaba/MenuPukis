@@ -24,6 +24,9 @@
                 900: "#3A1E08",
               },
             },
+            aspectRatio: {
+              "16/9": "16 / 9",
+            },
           },
         },
       };
@@ -57,9 +60,7 @@
   <body
     class="bg-cappuccino-50 text-cappuccino-900 font-sans antialiased min-h-screen flex flex-col"
   >
-    <!-- ========================================== -->
-    <!-- SIDE NAVIGATION / DRAWER MENU (Kiri)       -->
-    <!-- ========================================== -->
+    <!-- SIDE NAVIGATION / DRAWER MENU (Kiri) -->
     <div
       id="sideDrawerOverlay"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
@@ -92,7 +93,7 @@
               toggleSidebar(false);
               showLanding();
             "
-            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 hover:text-cappuccino-900 rounded-xl font-medium transition text-sm"
+            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 rounded-xl font-medium transition text-sm"
           >
             <i class="fas fa-home w-6 text-cappuccino-600"></i>
             <span>Main Page (Landing)</span>
@@ -114,7 +115,7 @@
               toggleSidebar(false);
               showToast('Fitur Ulasan Segera Hadir!');
             "
-            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 hover:text-cappuccino-900 rounded-xl font-medium transition text-sm"
+            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 rounded-xl font-medium transition text-sm"
           >
             <i class="fas fa-star w-6 text-cappuccino-600"></i>
             <span>Customer Reviews</span>
@@ -125,7 +126,7 @@
               toggleSidebar(false);
               openAboutModal();
             "
-            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 hover:text-cappuccino-900 rounded-xl font-medium transition text-sm"
+            class="flex items-center px-4 py-3 text-cappuccino-800 hover:bg-cappuccino-100 rounded-xl font-medium transition text-sm"
           >
             <i class="fas fa-info-circle w-6 text-cappuccino-600"></i>
             <span>About Us</span>
@@ -140,9 +141,7 @@
       </div>
     </aside>
 
-    <!-- ========================================== -->
-    <!-- KERANJANG SLIDE-OVER DRAWER (Geser Kanan)  -->
-    <!-- ========================================== -->
+    <!-- KERANJANG SLIDE-OVER DRAWER (Kanan) -->
     <div
       id="cartDrawerOverlay"
       class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
@@ -151,7 +150,7 @@
 
     <aside
       id="cartDrawer"
-      class="fixed top-0 right-0 z-50 h-full w-full sm:w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
+      class="fixed top-0 right-0 z-50 h-full w-[80%] max-w-sm bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
     >
       <div
         class="p-4 border-b border-cappuccino-100 flex items-center justify-between bg-cappuccino-50"
@@ -159,7 +158,7 @@
         <div class="flex items-center space-x-2">
           <i class="fas fa-shopping-basket text-cappuccino-600 text-lg"></i>
           <h3 class="font-bold text-base text-cappuccino-900">
-            Keranjang Belanja
+            Keranjang Pesanan
           </h3>
         </div>
         <button
@@ -197,9 +196,7 @@
       </div>
     </aside>
 
-    <!-- ========================================== -->
-    <!-- 1. HALAMAN AWAL / LANDING SCREEN (LOGO)   -->
-    <!-- ========================================== -->
+    <!-- LANDING SCREEN -->
     <div
       id="landingScreen"
       class="fixed inset-0 z-40 flex flex-col items-center justify-center text-white p-6 transition-all duration-500 overflow-hidden"
@@ -207,7 +204,7 @@
       <div class="absolute inset-0 z-0">
         <img
           src="bg.jpeg"
-          alt="Background Makanan"
+          alt="Background"
           class="w-full h-full object-cover filter blur-sm scale-105"
         />
         <div
@@ -220,22 +217,13 @@
         onclick="enterMenu()"
       >
         <div
-          class="relative w-44 h-44 mx-auto mb-6 rounded-full bg-cappuccino-100/20 p-2.5 backdrop-blur-md shadow-2xl transition transform group-hover:scale-105 group-active:scale-95 duration-300 border-2 border-cappuccino-200/40"
+          class="relative w-44 h-44 mx-auto mb-6 rounded-full bg-cappuccino-100/20 p-2.5 backdrop-blur-md shadow-2xl transition transform group-hover:scale-105 border-2 border-cappuccino-200/40"
         >
           <img
             src="logo.jpeg"
-            alt="Logo Restoran"
+            alt="Logo"
             class="w-full h-full object-cover rounded-full border-4 border-cappuccino-500 shadow-inner"
           />
-          <div
-            class="absolute inset-0 rounded-full bg-cappuccino-900/30 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"
-          >
-            <span
-              class="bg-cappuccino-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
-            >
-              Klik untuk Masuk
-            </span>
-          </div>
         </div>
         <h1
           class="text-3xl font-extrabold tracking-wide mb-2 text-cappuccino-100 drop-shadow-md"
@@ -246,7 +234,7 @@
           Pesan makanan favoritmu dengan cepat dan mudah!
         </p>
         <button
-          class="bg-cappuccino-100 text-cappuccino-800 font-bold px-8 py-3.5 rounded-full shadow-xl hover:bg-white transition duration-300 transform group-hover:translate-y-[-2px] flex items-center justify-center mx-auto space-x-2"
+          class="bg-cappuccino-100 text-cappuccino-800 font-bold px-8 py-3.5 rounded-full shadow-xl hover:bg-white transition flex items-center justify-center mx-auto space-x-2"
         >
           <span>Lihat Menu Makanan</span>
           <i class="fas fa-arrow-right text-cappuccino-600"></i>
@@ -254,9 +242,7 @@
       </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 2. NAVBAR                                 -->
-    <!-- ========================================== -->
+    <!-- NAVBAR -->
     <header
       class="sticky top-0 z-30 bg-white/95 backdrop-blur-md shadow-sm border-b border-cappuccino-200"
     >
@@ -267,7 +253,6 @@
           <button
             onclick="toggleSidebar(true)"
             class="w-10 h-10 rounded-xl bg-cappuccino-100 text-cappuccino-800 flex items-center justify-center hover:bg-cappuccino-200 transition border border-cappuccino-200"
-            title="Buka Menu"
           >
             <i class="fas fa-bars text-lg"></i>
           </button>
@@ -307,9 +292,7 @@
       </div>
     </header>
 
-    <!-- ========================================== -->
-    <!-- 3. HALAMAN UTAMA / MENU MAKANAN           -->
-    <!-- ========================================== -->
+    <!-- DAFTAR MENU UTAMA -->
     <main class="max-w-2xl mx-auto px-4 py-6 flex-grow w-full">
       <div
         class="mb-5 bg-white rounded-2xl p-4 shadow-sm border border-cappuccino-200 flex flex-col md:flex-row items-center justify-between gap-3"
@@ -318,9 +301,7 @@
           <h2 class="text-lg font-bold text-cappuccino-900">
             Daftar Menu Makanan
           </h2>
-          <p class="text-xs text-cappuccino-600">
-            Pilih menu favoritmu
-          </p>
+          <p class="text-xs text-cappuccino-600">Pilih menu favoritmu</p>
         </div>
         <div class="relative w-full md:w-64">
           <input
@@ -341,7 +322,7 @@
       </div>
     </main>
 
-    <!-- Floating Bar Keranjang -->
+    <!-- FLOATING CART BAR -->
     <div
       id="floatingCart"
       class="fixed bottom-4 left-4 right-4 max-w-md mx-auto bg-cappuccino-900 text-white rounded-2xl p-4 shadow-2xl flex items-center justify-between z-20 transform translate-y-28 transition-transform duration-300 border border-cappuccino-800"
@@ -352,7 +333,7 @@
         </div>
         <div>
           <p class="text-xs text-cappuccino-300" id="floatQty">
-            0 Item dipilih (Min. 10 Pcs)
+            0 Item dipilih
           </p>
           <p class="font-bold text-cappuccino-200 text-base" id="floatTotal">
             Rp 0
@@ -368,9 +349,7 @@
       </button>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 4. MODAL CHECKOUT TERPISAH (FULLSCREEN)   -->
-    <!-- ========================================== -->
+    <!-- MODAL CHECKOUT -->
     <div
       id="checkoutModal"
       class="fixed inset-0 z-50 bg-white hidden flex-col w-full h-full"
@@ -383,7 +362,6 @@
             <button
               onclick="closeCheckoutModal()"
               class="w-9 h-9 rounded-xl bg-cappuccino-100 text-cappuccino-800 flex items-center justify-center hover:bg-cappuccino-200 transition border border-cappuccino-200"
-              title="Kembali ke Menu"
             >
               <i class="fas fa-arrow-left text-sm"></i>
             </button>
@@ -396,8 +374,7 @@
           </div>
           <button
             onclick="closeCheckoutModal()"
-            class="text-cappuccino-600 hover:text-cappuccino-800 p-1 rounded-lg transition"
-            title="Tutup Modal"
+            class="text-cappuccino-600 hover:text-cappuccino-800 p-1 rounded-lg"
           >
             <i class="fas fa-times text-xl"></i>
           </button>
@@ -429,21 +406,19 @@
               />
             </div>
 
-            <!-- Opsi Kemasan / Packing Interaktif (Hide/Show Container) -->
+            <!-- Opsi Packing -->
             <div class="space-y-2">
               <label
                 class="block text-xs text-cappuccino-700 mb-1 font-semibold"
                 >Opsi Kemasan / Packing *</label
               >
-
               <div
                 class="border border-cappuccino-200 rounded-2xl bg-white overflow-hidden shadow-sm"
               >
-                <!-- Header Toggle Clickable -->
                 <button
                   type="button"
                   onclick="togglePackingContainer()"
-                  class="w-full p-3 bg-cappuccino-50 hover:bg-cappuccino-100 flex items-center justify-between text-left transition"
+                  class="w-full p-3 bg-cappuccino-50 hover:bg-cappuccino-100 flex items-center justify-between transition"
                 >
                   <span
                     class="text-xs font-bold text-cappuccino-900 flex items-center space-x-2"
@@ -457,14 +432,12 @@
                   ></i>
                 </button>
 
-                <!-- Container Opsi Pilihan (Tersembunyi by default) -->
                 <div
                   id="packingListContainer"
                   class="hidden p-3 border-t border-cappuccino-100 space-y-2 bg-white"
                 >
-                  <!-- Option Plastik (Gratis) - Unchecked by default -->
                   <label
-                    class="flex items-center justify-between p-2.5 rounded-xl border border-cappuccino-200 bg-cappuccino-50/30 cursor-pointer hover:bg-cappuccino-50 transition"
+                    class="flex items-center justify-between p-2.5 rounded-xl border border-cappuccino-200 bg-cappuccino-50/30 cursor-pointer hover:bg-cappuccino-50"
                   >
                     <div class="flex items-center space-x-2.5">
                       <input
@@ -481,11 +454,7 @@
                       >Rp 0</span
                     >
                   </label>
-
-                  <!-- List Opsi Dus dengan Tombol + / - -->
-                  <div id="boxPackingList" class="space-y-2">
-                    <!-- Render oleh JS -->
-                  </div>
+                  <div id="boxPackingList" class="space-y-2"></div>
                 </div>
               </div>
             </div>
@@ -515,17 +484,22 @@
                 <input
                   type="date"
                   id="pickupDate"
-                  class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50 text-cappuccino-900"
+                  class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
                 />
               </div>
               <div>
-                <label class="block text-xs text-cappuccino-700 mb-1"
-                  >Jam Pengambilan *</label
-                >
+                <label class="block text-xs text-cappuccino-700 mb-1">
+                  Jam Pengambilan *
+                  <span class="text-red-500 text-[10px] font-semibold"
+                    >(05:00 - 11:00)</span
+                  >
+                </label>
                 <input
                   type="time"
                   id="pickupTime"
-                  class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50 text-cappuccino-900"
+                  min="05:00"
+                  max="11:00"
+                  class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
                 />
               </div>
             </div>
@@ -549,7 +523,7 @@
               <textarea
                 id="custNotes"
                 rows="2"
-                placeholder="Contoh: Tanpa topping, tanpa olesan margarin..."
+                placeholder="Contoh: Tanpa topping..."
                 class="w-full border border-cappuccino-200 rounded-xl p-2.5 text-sm focus:ring-2 focus:ring-cappuccino-500 outline-none bg-cappuccino-50/50"
               ></textarea>
             </div>
@@ -576,20 +550,60 @@
             <i class="fas fa-check-circle"></i>
             <span>Selesaikan & Buat Catatan Pesanan</span>
           </button>
-          <button
-            onclick="closeCheckoutModal()"
-            class="w-full border border-cappuccino-300 hover:bg-cappuccino-100 text-cappuccino-800 font-semibold py-2.5 rounded-xl transition flex items-center justify-center space-x-2 text-xs"
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL KONFIRMASI -->
+    <div
+      id="confirmModal"
+      class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-md w-full p-5 space-y-4 shadow-2xl max-h-[90vh] flex flex-col"
+      >
+        <div class="flex items-center space-x-3 text-cappuccino-800">
+          <div
+            class="w-10 h-10 rounded-full bg-cappuccino-100 flex items-center justify-center text-cappuccino-700 text-lg flex-shrink-0"
           >
-            <i class="fas fa-arrow-left"></i>
-            <span>Kembali ke Menu Makanan</span>
+            <i class="fas fa-question-circle"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-cappuccino-900">
+              Konfirmasi Pesanan
+            </h3>
+            <p class="text-xs text-cappuccino-600">
+              Periksa rincian data sebelum memproses catatan
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="bg-cappuccino-50 border border-cappuccino-200 rounded-xl p-3 text-xs space-y-2 overflow-y-auto custom-scrollbar flex-grow"
+          id="confirmSummaryContent"
+        >
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 pt-2 border-t border-cappuccino-100">
+          <button
+            onclick="closeConfirmModal()"
+            class="w-full border border-cappuccino-300 hover:bg-cappuccino-100 text-cappuccino-800 font-semibold py-2.5 rounded-xl text-xs transition"
+          >
+            <i class="fas fa-edit mr-1"></i> Cek Kembali
+          </button>
+          <button
+            onclick="proceedToReceipt()"
+            class="w-full bg-cappuccino-600 hover:bg-cappuccino-700 text-white font-bold py-2.5 rounded-xl text-xs transition shadow-md"
+          >
+            <span>Lanjutkan ke Catatan</span>
+            <i class="fas fa-arrow-right ml-1"></i>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 5. MODAL STRUK / CATATAN PESANAN (FULLSCREEN) -->
-    <!-- ========================================== -->
+    <!-- MODAL STRUK / CATATAN PESANAN -->
     <div
       id="receiptModal"
       class="fixed inset-0 z-50 bg-white hidden flex-col w-full h-full"
@@ -601,7 +615,6 @@
           <button
             onclick="backToCheckoutFromReceipt()"
             class="absolute left-4 top-4 w-9 h-9 rounded-xl bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition"
-            title="Kembali ke Form Checkout"
           >
             <i class="fas fa-arrow-left text-sm"></i>
           </button>
@@ -610,7 +623,7 @@
           >
             <i class="fas fa-receipt text-2xl"></i>
           </div>
-          <h3 class="text-lg font-bold">Catatan Pesanan Siap!</h3>
+          <h3 class="text-lg font-bold">Catatan Pesanan Selesai Dibuat!</h3>
           <p class="text-xs text-cappuccino-200">
             Disertai jam & menit pesanan
           </p>
@@ -644,14 +657,6 @@
           </button>
 
           <button
-            onclick="backToCheckoutFromReceipt()"
-            class="w-full border border-cappuccino-300 hover:bg-cappuccino-100 text-cappuccino-800 font-semibold py-2 rounded-xl transition text-xs flex items-center justify-center space-x-2"
-          >
-            <i class="fas fa-arrow-left"></i>
-            <span>Kembali ke Form Checkout</span>
-          </button>
-
-          <button
             onclick="closeReceiptModal()"
             class="w-full text-center text-xs text-cappuccino-600 hover:text-cappuccino-800 py-1"
           >
@@ -661,9 +666,7 @@
       </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 6. MODAL ABOUT US                          -->
-    <!-- ========================================== -->
+    <!-- MODAL ABOUT US -->
     <div
       id="aboutModal"
       class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4"
@@ -693,7 +696,7 @@
           >
             <img
               src="logo.jpeg"
-              alt="Logo Pukis Baba"
+              alt="Logo"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
@@ -703,20 +706,23 @@
           >
             <p>
               <i class="fas fa-check-circle text-cappuccino-600 mr-1.5"></i>
-              Kami tidak memakai Gula Biang/ Pemanis buatan jadi aman di
-              Tenggorokan & di Perut.
+              Resep asli keluarga dari tahun 70an.
             </p>
             <p>
               <i class="fas fa-check-circle text-cappuccino-600 mr-1.5"></i>
-              Di konsumsi anak anak aman, mau polosan tanpa Topping boleh bgt
-              tinggal Request.
+              Dibuat tanpa pemanis buatan sehingga aman dikonsumsi anak anak
+              maupun dewasa.
             </p>
             <p>
               <i class="fas fa-check-circle text-cappuccino-600 mr-1.5"></i>
-              Di konsumsi orang tua juga aman, gk mau pakai Olesan Margarin?
-              Boleh juga tinggal Request saja.
+              Untuk pemesanan minimal 50 buah harap chat 1 hari sebelumnya
+              (maksimal jam 12 siang)
             </p>
           </div>
+          <h4 class="font-bold text-cappuccino-900 text-sm">
+            📍Pasar Cikutra sebrang Indomaret dekat SMAN 10 Bdg Buka setiap hari
+            dr jam 05.00-12.00 WIB (bisa tutup lebih cepat)
+          </h4>
         </div>
         <div
           class="p-4 border-t border-cappuccino-100 bg-cappuccino-50 text-center"
@@ -731,18 +737,16 @@
       </div>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- TOAST NOTIFIKASI -->
     <div
       id="toast"
       class="fixed top-5 right-5 z-50 bg-cappuccino-900 text-white px-4 py-3 rounded-xl shadow-2xl hidden flex items-center space-x-2 text-sm transition-all duration-300 border border-cappuccino-700"
     >
-      <i class="fas fa-info-circle text-cappuccino-300"></i>
+      <i class="fas fa-info-circle text-amber-400 text-base"></i>
       <span id="toastMsg">Notifikasi</span>
     </div>
 
-    <!-- ========================================== -->
-    <!-- LOGIC JAVASCRIPT                           -->
-    <!-- ========================================== -->
+    <!-- LOGIC JAVASCRIPT -->
     <script>
       const RESTO_WA_NUMBER = "6285759470044";
       const QTY_STEP = 5;
@@ -756,7 +760,7 @@
           sales: "10RB+",
           likes: "350",
           bestSeller: true,
-          desc: "Kue pukis jadul yang empuk dan gurih dari olesan Margarin, pas banget buat kamu yang gk terlalu suka manis. cocok dihidangkan dengan kopi. Nikmati setiap gigitannya!",
+          desc: "Kue pukis jadul yang empuk dengan lapisan gurih dari oles Margarin, cocok buat kamu yang gk terlalu suka manis. Best bgt sih kalau dimakan bareng teh hangat atau kopi. Nikmati setiap gigitannya!",
           img: "ori.jpeg",
         },
         {
@@ -786,9 +790,9 @@
           sales: "7RB+",
           likes: "99",
           bestSeller: false,
-          desc: "Kue yang terlihat cantik merah merona ",
+          desc: "Kue yang terlihat cantik merah merona",
           img: "redvel.jpeg",
-          availableDays: [0, 6], // 0: Minggu, 6: Sabtu
+          availableDays: [0, 6],
         },
         {
           id: 5,
@@ -797,7 +801,7 @@
           sales: "8RB+",
           likes: "133",
           bestSeller: false,
-          desc: "Nikmati harumnya adonan rasa pandan, manis dan lembut dalam setiap gigitan 🤤",
+          desc: "Nikmati harumnya adonan rasa pandan, manis dan lembut dalam setiap gigitan",
           img: "pandan.jpeg",
         },
         {
@@ -817,12 +821,11 @@
           sales: "10RB+",
           likes: "172",
           bestSeller: false,
-          desc: "Adonan polos ditambah topping Oreo hmm harum harum gimana gituh",
+          desc: "Adonan polos ditambah topping Oreo harum gimana gitu",
           img: "oreo.jpeg",
         },
       ];
 
-      // Master data opsi Dus
       const boxPackingOptions = [
         { id: "box10", name: "Dus Isi 10 Pcs", price: 2000 },
         { id: "box15", name: "Dus Isi 15 Pcs", price: 2000 },
@@ -832,32 +835,341 @@
       ];
 
       let cart = {};
-      let boxCart = {}; // { box10: 0, box15: 0, ... }
+      let boxCart = {};
       let generatedFormattedOrder = "";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const today = new Date().toISOString().split("T")[0];
+        const dateInput = document.getElementById("pickupDate");
+        if (dateInput) dateInput.value = today;
+
+        boxPackingOptions.forEach((box) => {
+          boxCart[box.id] = 0;
+        });
+
+        renderMenu(menuData);
+        renderBoxPackingList();
+        updateCartUI();
+      });
 
       function isItemAvailableToday(item) {
         if (!item.availableDays) return true;
-        const todayDay = new Date().getDay();
-        return item.availableDays.includes(todayDay);
+        const currentDay = new Date().getDay();
+        return item.availableDays.includes(currentDay);
       }
 
-      function initDefaultDate() {
-        const today = new Date().toISOString().split("T")[0];
-        const dateInput = document.getElementById("pickupDate");
-        if (dateInput && !dateInput.value) {
-          dateInput.value = today;
+      function formatRupiah(number) {
+        return "Rp " + number.toLocaleString("id-ID");
+      }
+
+      // RENDER MENU UTAMA
+      function renderMenu(items) {
+        const menuContainer = document.getElementById("menuContainer");
+        if (!menuContainer) return;
+
+        if (items.length === 0) {
+          menuContainer.innerHTML = `
+            <div class="text-center py-10 bg-white rounded-2xl border border-cappuccino-200">
+              <i class="fas fa-cookie text-4xl text-cappuccino-300 mb-2"></i>
+              <p class="text-cappuccino-600 text-sm font-medium">Menu tidak ditemukan...</p>
+            </div>`;
+          return;
         }
+
+        menuContainer.innerHTML = items
+          .map((item) => {
+            const isAvailable = isItemAvailableToday(item);
+            const currentQty = cart[item.id] || 0;
+
+            return `
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-cappuccino-200 flex flex-col md:flex-row gap-4 items-center">
+              <div class="relative w-full md:w-48 aspect-[16/9] rounded-xl overflow-hidden bg-cappuccino-100 flex-shrink-0">
+                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300x169?text=Pukis+Baba'" />
+                ${
+                  item.bestSeller
+                    ? `<span class="absolute top-2 left-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow">BEST SELLER</span>`
+                    : ""
+                }
+              </div>
+              <div class="flex-grow w-full flex flex-col justify-between space-y-2">
+                <div>
+                  <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-cappuccino-900 text-base">${item.name}</h3>
+                    <span class="font-extrabold text-cappuccino-700 text-sm">${formatRupiah(item.price)}</span>
+                  </div>
+                  <p class="text-xs text-cappuccino-600 mt-1 leading-relaxed whitespace-normal break-words">${item.desc}</p>
+                </div>
+                
+                <div class="flex items-center justify-between pt-2 border-t border-cappuccino-100 text-xs text-cappuccino-500">
+                  <div class="flex items-center space-x-3">
+                    <span><i class="fas fa-shopping-bag mr-1 text-cappuccino-400"></i>${item.sales}</span>
+                    <span><i class="fas fa-heart mr-1 text-red-400"></i>${item.likes}</span>
+                  </div>
+                  
+                  <div>
+                    ${
+                      !isAvailable
+                        ? `<span class="bg-red-100 text-red-600 font-semibold px-2.5 py-1 rounded-lg text-[11px]">Hanya Sabtu & Minggu</span>`
+                        : currentQty === 0
+                          ? `<button onclick="updateItemQty(${item.id}, ${QTY_STEP})" class="bg-cappuccino-600 hover:bg-cappuccino-700 text-white font-bold px-4 py-1.5 rounded-xl transition shadow-sm text-xs">
+                            + Tambah
+                           </button>`
+                          : `<div class="flex items-center bg-cappuccino-100 rounded-xl p-1 border border-cappuccino-200">
+                            <button onclick="updateItemQty(${item.id}, -${QTY_STEP})" class="w-7 h-7 bg-white rounded-lg text-cappuccino-800 font-bold flex items-center justify-center hover:bg-cappuccino-200 transition">-</button>
+                            <span class="px-3 font-bold text-cappuccino-900 text-xs">${currentQty}</span>
+                            <button onclick="updateItemQty(${item.id}, ${QTY_STEP})" class="w-7 h-7 bg-cappuccino-600 text-white rounded-lg font-bold flex items-center justify-center hover:bg-cappuccino-700 transition">+</button>
+                           </div>`
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>`;
+          })
+          .join("");
       }
 
+      // RENDER OPSI PACKING DUS
+      function renderBoxPackingList() {
+        const boxContainer = document.getElementById("boxPackingList");
+        if (!boxContainer) return;
+
+        boxContainer.innerHTML = boxPackingOptions
+          .map((box) => {
+            const qty = boxCart[box.id] || 0;
+            return `
+            <div class="flex items-center justify-between p-2.5 rounded-xl border border-cappuccino-200 bg-cappuccino-50/30">
+              <div>
+                <p class="text-xs font-semibold text-cappuccino-900">${box.name}</p>
+                <p class="text-[10px] text-cappuccino-600">${formatRupiah(box.price)} / pcs</p>
+              </div>
+              <div class="flex items-center bg-white rounded-lg p-0.5 border border-cappuccino-200">
+                <button onclick="updateBoxQty('${box.id}', -1)" class="w-6 h-6 text-cappuccino-800 font-bold hover:bg-cappuccino-100 rounded flex items-center justify-center">-</button>
+                <span class="px-2 font-bold text-xs text-cappuccino-900">${qty}</span>
+                <button onclick="updateBoxQty('${box.id}', 1)" class="w-6 h-6 text-cappuccino-600 font-bold hover:bg-cappuccino-100 rounded flex items-center justify-center">+</button>
+              </div>
+            </div>`;
+          })
+          .join("");
+      }
+
+      // UPDATE JUMLAH ITEM KUE
+      function updateItemQty(id, delta) {
+        const item = menuData.find((m) => m.id === id);
+        if (!item || !isItemAvailableToday(item)) return;
+
+        const current = cart[id] || 0;
+        const updated = current + delta;
+
+        if (updated <= 0) {
+          delete cart[id];
+        } else {
+          cart[id] = updated;
+        }
+
+        renderMenu(getFilteredItems());
+        updateCartUI();
+      }
+
+      // UPDATE JUMLAH DUS PACKING
+      function updateBoxQty(boxId, delta) {
+        const current = boxCart[boxId] || 0;
+        const updated = current + delta;
+        boxCart[boxId] = updated < 0 ? 0 : updated;
+
+        renderBoxPackingList();
+        updateCartUI();
+      }
+
+      function getFilteredItems() {
+        const query = (
+          document.getElementById("searchInput")?.value || ""
+        ).toLowerCase();
+        return menuData.filter(
+          (item) =>
+            item.name.toLowerCase().includes(query) ||
+            item.desc.toLowerCase().includes(query),
+        );
+      }
+
+      function filterMenu() {
+        renderMenu(getFilteredItems());
+      }
+
+      // UPDATE UI KERANJANG BELANJA & RINGKASAN ITEM (TERMASUK KEMASAN PLASTIK/DUS)
+      function updateCartUI() {
+        let totalQty = 0;
+        let subtotalItems = 0;
+
+        Object.keys(cart).forEach((id) => {
+          const item = menuData.find((m) => m.id === parseInt(id));
+          if (item) {
+            const qty = cart[id];
+            totalQty += qty;
+            subtotalItems += qty * item.price;
+          }
+        });
+
+        let boxTotal = 0;
+        let boxDetails = [];
+        Object.keys(boxCart).forEach((boxId) => {
+          const qty = boxCart[boxId];
+          if (qty > 0) {
+            const box = boxPackingOptions.find((b) => b.id === boxId);
+            if (box) {
+              boxTotal += qty * box.price;
+              boxDetails.push(`${box.name} (${qty}x)`);
+            }
+          }
+        });
+
+        const isPlastikChecked =
+          document.getElementById("packingPlastik")?.checked;
+        if (isPlastikChecked) {
+          boxDetails.unshift("Plastik (Gratis)");
+        }
+
+        const packingSummaryText =
+          document.getElementById("packingSummaryText");
+        if (packingSummaryText) {
+          packingSummaryText.innerText =
+            boxDetails.length > 0
+              ? boxDetails.join(", ")
+              : "Pilih Opsi Kemasan";
+        }
+
+        const cartBadge = document.getElementById("cartBadge");
+        if (cartBadge) cartBadge.innerText = totalQty;
+
+        const floatQty = document.getElementById("floatQty");
+        if (floatQty)
+          floatQty.innerText = `${totalQty} Item dipilih (Min. ${MIN_ORDER_QTY} Pcs)`;
+
+        const floatTotal = document.getElementById("floatTotal");
+        if (floatTotal)
+          floatTotal.innerText = formatRupiah(subtotalItems + boxTotal);
+
+        const cartDrawerSubtotal =
+          document.getElementById("cartDrawerSubtotal");
+        if (cartDrawerSubtotal)
+          cartDrawerSubtotal.innerText = formatRupiah(subtotalItems);
+
+        const checkoutTotal = document.getElementById("checkoutTotal");
+        if (checkoutTotal)
+          checkoutTotal.innerText = formatRupiah(subtotalItems + boxTotal);
+
+        const floatingCart = document.getElementById("floatingCart");
+        if (floatingCart) {
+          if (totalQty > 0) {
+            floatingCart.classList.remove("translate-y-28");
+          } else {
+            floatingCart.classList.add("translate-y-28");
+          }
+        }
+
+        renderCartDrawerList();
+        renderCheckoutSummaryList();
+      }
+
+      // RENDER ITEM DI KERANJANG (DENGAN TOMBOL + DAN -)
+      function renderCartDrawerList() {
+        const list = document.getElementById("cartDrawerItemsList");
+        if (!list) return;
+
+        const itemKeys = Object.keys(cart);
+        if (itemKeys.length === 0) {
+          list.innerHTML = `<p class="text-xs text-cappuccino-500 text-center py-6">Keranjang belanja masih kosong.</p>`;
+          return;
+        }
+
+        list.innerHTML = itemKeys
+          .map((id) => {
+            const item = menuData.find((m) => m.id === parseInt(id));
+            const qty = cart[id];
+            return `
+            <div class="flex items-center gap-3 p-3 bg-cappuccino-50 rounded-2xl border border-cappuccino-200">
+              <img src="${item.img}" alt="${item.name}"
+                class="w-14 h-14 rounded-xl object-cover flex-shrink-0"
+                onerror="this.src='https://via.placeholder.com/100?text=Pukis'" />
+              <div class="flex-grow min-w-0">
+                <p class="text-xs font-bold text-cappuccino-900 truncate">${item.name}</p>
+                <p class="text-xs text-cappuccino-600">${formatRupiah(qty * item.price)}</p>
+              </div>
+              <div class="flex items-center space-x-2 flex-shrink-0">
+                <button onclick="updateItemQty(${item.id}, -${QTY_STEP})"
+                  class="w-7 h-7 bg-white border border-cappuccino-200 rounded-lg text-cappuccino-800 font-bold flex items-center justify-center hover:bg-cappuccino-100 transition">-</button>
+                <span class="w-6 text-center font-bold text-cappuccino-900 text-xs">${qty}</span>
+                <button onclick="updateItemQty(${item.id}, ${QTY_STEP})"
+                  class="w-7 h-7 bg-cappuccino-600 text-white rounded-lg font-bold flex items-center justify-center hover:bg-cappuccino-700 transition">+</button>
+              </div>
+            </div>`;
+          })
+          .join("");
+      }
+
+      // MENAMPILKAN KUE & KEMASAN PADA RINGKASAN ITEM FORM CHECKOUT
+      function renderCheckoutSummaryList() {
+        const list = document.getElementById("checkoutSummaryList");
+        if (!list) return;
+
+        const itemKeys = Object.keys(cart);
+        const isPlastik = document.getElementById("packingPlastik")?.checked;
+        let html = "";
+
+        if (
+          itemKeys.length === 0 &&
+          !isPlastik &&
+          Object.values(boxCart).every((q) => q === 0)
+        ) {
+          list.innerHTML = `<p class="text-cappuccino-500">Belum ada menu atau kemasan dipilih.</p>`;
+          return;
+        }
+
+        // Render Menu Pukis
+        itemKeys.forEach((id) => {
+          const item = menuData.find((m) => m.id === parseInt(id));
+          const qty = cart[id];
+          html += `
+            <div class="flex justify-between items-center text-cappuccino-800 py-1 border-b border-cappuccino-100">
+              <span>${item.name} (${qty}x)</span>
+              <span class="font-bold">${formatRupiah(qty * item.price)}</span>
+            </div>`;
+        });
+
+        // Render Kemasan Plastik jika dicentang
+        if (isPlastik) {
+          html += `
+            <div class="flex justify-between items-center text-cappuccino-800 py-1 border-b border-cappuccino-100">
+              <span>Plastik</span>
+              <span class="font-bold">Rp 0</span>
+            </div>`;
+        }
+
+        // Render Kemasan Dus jika ditambah
+        Object.keys(boxCart).forEach((bId) => {
+          const qty = boxCart[bId];
+          if (qty > 0) {
+            const box = boxPackingOptions.find((x) => x.id === bId);
+            html += `
+              <div class="flex justify-between items-center text-cappuccino-800 py-1 border-b border-cappuccino-100">
+                <span>${box.name} (${qty}x)</span>
+                <span class="font-bold">${formatRupiah(qty * box.price)}</span>
+              </div>`;
+          }
+        });
+
+        list.innerHTML = html;
+      }
+
+      // UI CONTROLLERS
       function toggleSidebar(open) {
         const drawer = document.getElementById("sideDrawer");
         const overlay = document.getElementById("sideDrawerOverlay");
         if (open) {
-          overlay.classList.remove("opacity-0", "pointer-events-none");
           drawer.classList.remove("-translate-x-full");
+          overlay.classList.remove("opacity-0", "pointer-events-none");
         } else {
-          overlay.classList.add("opacity-0", "pointer-events-none");
           drawer.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0", "pointer-events-none");
         }
       }
 
@@ -865,502 +1177,285 @@
         const drawer = document.getElementById("cartDrawer");
         const overlay = document.getElementById("cartDrawerOverlay");
         if (open) {
-          overlay.classList.remove("opacity-0", "pointer-events-none");
           drawer.classList.remove("translate-x-full");
+          overlay.classList.remove("opacity-0", "pointer-events-none");
         } else {
-          overlay.classList.add("opacity-0", "pointer-events-none");
           drawer.classList.add("translate-x-full");
+          overlay.classList.add("opacity-0", "pointer-events-none");
         }
       }
 
-      function showLanding() {
-        document.getElementById("landingScreen").classList.remove("hidden");
-      }
-
-      function enterMenu() {
-        document.getElementById("landingScreen").classList.add("hidden");
-      }
-
-      function openAboutModal() {
-        document.getElementById("aboutModal").classList.remove("hidden");
-      }
-
-      function closeAboutModal() {
-        document.getElementById("aboutModal").classList.add("hidden");
-      }
-
-      function showToast(message) {
-        const toast = document.getElementById("toast");
-        const toastMsg = document.getElementById("toastMsg");
-        toastMsg.textContent = message;
-        toast.classList.remove("hidden");
-        setTimeout(() => {
-          toast.classList.add("hidden");
-        }, 3000);
-      }
-
-      // Fungsi Hide / Show Container Opsi Kemasan
       function togglePackingContainer() {
         const container = document.getElementById("packingListContainer");
         const chevron = document.getElementById("packingChevron");
-        if (container.classList.contains("hidden")) {
-          container.classList.remove("hidden");
-          chevron.classList.add("rotate-180");
-        } else {
-          container.classList.add("hidden");
-          chevron.classList.remove("rotate-180");
-        }
+        if (container) container.classList.toggle("hidden");
+        if (chevron) chevron.classList.toggle("rotate-180");
       }
 
-      function renderMenu(items = menuData) {
-        const container = document.getElementById("menuContainer");
-        container.innerHTML = "";
-
-        items.forEach((item) => {
-          const available = isItemAvailableToday(item);
-          const currentQty = cart[item.id] || 0;
-
-          const card = document.createElement("div");
-          card.className =
-            "bg-white rounded-2xl p-4 shadow-sm border border-cappuccino-200 flex flex-col sm:flex-row gap-4 items-center transition hover:shadow-md";
-
-          card.innerHTML = `
-            <div class="relative w-full sm:w-28 h-28 flex-shrink-0 rounded-xl overflow-hidden bg-cappuccino-100">
-              <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover ${!available ? "filter grayscale brightness-75" : ""}" />
-              ${
-                item.bestSeller
-                  ? `<span class="absolute top-2 left-2 bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow"><i class="fas fa-crown text-[9px] mr-1"></i>Best Seller</span>`
-                  : ""
-              }
-              ${
-                !available
-                  ? `<span class="absolute inset-0 bg-black/60 flex items-center justify-center text-white text-[11px] font-bold text-center px-2 leading-tight">Tersedia Hanya di Hari Sabtu & Minggu</span>`
-                  : ""
-              }
-            </div>
-            
-            <div class="flex-grow w-full flex flex-col justify-between">
-              <div>
-                <div class="flex items-start justify-between">
-                  <h3 class="font-bold text-cappuccino-900 text-base">${item.name}</h3>
-                  <span class="font-extrabold text-cappuccino-700 text-base">Rp ${item.price.toLocaleString("id-ID")}</span>
-                </div>
-                <div class="flex items-center space-x-3 text-xs text-cappuccino-500 my-1">
-                  <span><i class="fas fa-shopping-bag text-cappuccino-400 mr-1"></i>Terjual ${item.sales}</span>
-                  <span><i class="fas fa-heart text-rose-400 mr-1"></i>${item.likes}</span>
-                </div>
-                <p class="text-xs text-cappuccino-600 line-clamp-2 mt-1">${item.desc}</p>
-              </div>
-
-              <div class="mt-3 flex items-center justify-between border-t border-cappuccino-100 pt-2">
-                <span class="text-[11px] text-cappuccino-500 italic">+${QTY_STEP} pcs / klik</span>
-                ${
-                  available
-                    ? `
-                  <div class="flex items-center space-x-2">
-                    ${
-                      currentQty > 0
-                        ? `
-                      <button onclick="updateQty(${item.id}, -${QTY_STEP})" class="w-8 h-8 rounded-xl bg-cappuccino-100 text-cappuccino-800 font-bold hover:bg-cappuccino-200 active:scale-95 transition flex items-center justify-center border border-cappuccino-200">
-                        <i class="fas fa-minus text-xs"></i>
-                      </button>
-                      <span class="font-bold text-sm text-cappuccino-900 w-6 text-center">${currentQty}</span>
-                    `
-                        : ""
-                    }
-                    <button onclick="updateQty(${item.id}, ${QTY_STEP})" class="w-8 h-8 rounded-xl bg-cappuccino-600 text-white font-bold hover:bg-cappuccino-700 active:scale-95 transition flex items-center justify-center shadow-sm">
-                      <i class="fas fa-plus text-xs"></i>
-                    </button>
-                  </div>
-                `
-                    : `<span class="text-xs text-rose-600 font-semibold">Tersedia Hanya di Hari Sabtu & Minggu</span>`
-                }
-              </div>
-            </div>
-          `;
-
-          container.appendChild(card);
-        });
+      function showLanding() {
+        const screen = document.getElementById("landingScreen");
+        if (screen) screen.classList.remove("hidden");
       }
 
-      function filterMenu() {
-        const query = document
-          .getElementById("searchInput")
-          .value.toLowerCase();
-        const filtered = menuData.filter(
-          (item) =>
-            item.name.toLowerCase().includes(query) ||
-            item.desc.toLowerCase().includes(query),
-        );
-        renderMenu(filtered);
+      function enterMenu() {
+        const screen = document.getElementById("landingScreen");
+        if (screen) screen.classList.add("hidden");
       }
 
-      function updateQty(itemId, change) {
-        const current = cart[itemId] || 0;
-        const updated = current + change;
-
-        if (updated <= 0) {
-          delete cart[itemId];
-        } else {
-          cart[itemId] = updated;
-        }
-
-        renderMenu();
-        updateCartUI();
+      function openAboutModal() {
+        document.getElementById("aboutModal")?.classList.remove("hidden");
       }
-
-      function getTotalItemsCount() {
-        return Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-      }
-
-      function getItemsSubtotal() {
-        return Object.entries(cart).reduce((sum, [id, qty]) => {
-          const item = menuData.find((m) => m.id == id);
-          return sum + (item ? item.price * qty : 0);
-        }, 0);
-      }
-
-      function updateBoxQty(boxId, change) {
-        const current = boxCart[boxId] || 0;
-        const updated = Math.max(0, current + change);
-        if (updated === 0) {
-          delete boxCart[boxId];
-        } else {
-          boxCart[boxId] = updated;
-        }
-        renderBoxPackingOptions();
-        updateCartUI();
-      }
-
-      function renderBoxPackingOptions() {
-        const container = document.getElementById("boxPackingList");
-        if (!container) return;
-        container.innerHTML = "";
-
-        boxPackingOptions.forEach((box) => {
-          const qty = boxCart[box.id] || 0;
-          const row = document.createElement("div");
-          row.className =
-            "flex items-center justify-between p-2.5 rounded-xl border border-cappuccino-200 bg-cappuccino-50/30";
-          row.innerHTML = `
-            <div>
-              <span class="text-xs font-semibold text-cappuccino-900">${box.name}</span>
-              <span class="text-[11px] text-cappuccino-600 block">(+Rp ${box.price.toLocaleString("id-ID")}/dus)</span>
-            </div>
-            <div class="flex items-center space-x-2">
-              <button
-                type="button"
-                onclick="updateBoxQty('${box.id}', -1)"
-                class="w-7 h-7 rounded-lg bg-cappuccino-100 text-cappuccino-800 font-bold border border-cappuccino-200 flex items-center justify-center hover:bg-cappuccino-200 active:scale-95 text-xs transition"
-              >
-                -
-              </button>
-              <span class="w-6 text-center text-xs font-bold text-cappuccino-900">${qty}</span>
-              <button
-                type="button"
-                onclick="updateBoxQty('${box.id}', 1)"
-                class="w-7 h-7 rounded-lg bg-cappuccino-700 text-white font-bold flex items-center justify-center hover:bg-cappuccino-800 active:scale-95 text-xs shadow-sm transition"
-              >
-                +
-              </button>
-            </div>
-          `;
-          container.appendChild(row);
-        });
-      }
-
-      function updateCartUI() {
-        const totalQty = getTotalItemsCount();
-        const subtotal = getItemsSubtotal();
-
-        // Update Badge Navbar
-        document.getElementById("cartBadge").textContent = totalQty;
-
-        // Update Floating Cart Bar
-        const floatCart = document.getElementById("floatingCart");
-        document.getElementById("floatQty").textContent =
-          `${totalQty} Item dipilih (Min. ${MIN_ORDER_QTY} Pcs)`;
-        document.getElementById("floatTotal").textContent =
-          `Rp ${subtotal.toLocaleString("id-ID")}`;
-
-        if (totalQty > 0) {
-          floatCart.classList.remove("translate-y-28");
-        } else {
-          floatCart.classList.add("translate-y-28");
-        }
-
-        // Render Slide-Over Cart Items List
-        const cartList = document.getElementById("cartDrawerItemsList");
-        cartList.innerHTML = "";
-
-        if (Object.keys(cart).length === 0) {
-          cartList.innerHTML = `<p class="text-center text-xs text-cappuccino-500 py-8">Keranjang belanja Anda masih kosong.</p>`;
-        } else {
-          Object.entries(cart).forEach(([id, qty]) => {
-            const item = menuData.find((m) => m.id == id);
-            if (!item) return;
-
-            const div = document.createElement("div");
-            div.className =
-              "flex items-center justify-between p-2.5 bg-cappuccino-50 rounded-xl border border-cappuccino-100";
-            div.innerHTML = `
-              <div class="flex items-center space-x-3">
-                <img src="${item.img}" alt="${item.name}" class="w-10 h-10 object-cover rounded-lg" />
-                <div>
-                  <p class="font-semibold text-xs text-cappuccino-900">${item.name}</p>
-                  <p class="text-[11px] text-cappuccino-600">Rp ${(item.price * qty).toLocaleString("id-ID")}</p>
-                </div>
-              </div>
-              <div class="flex items-center space-x-1.5">
-                <button onclick="updateQty(${item.id}, -${QTY_STEP})" class="w-6 h-6 rounded bg-white text-cappuccino-800 border border-cappuccino-200 font-bold flex items-center justify-center hover:bg-cappuccino-100 text-xs">-</button>
-                <span class="text-xs font-bold w-5 text-center">${qty}</span>
-                <button onclick="updateQty(${item.id}, ${QTY_STEP})" class="w-6 h-6 rounded bg-cappuccino-600 text-white font-bold flex items-center justify-center hover:bg-cappuccino-700 text-xs">+</button>
-              </div>
-            `;
-            cartList.appendChild(div);
-          });
-        }
-
-        document.getElementById("cartDrawerSubtotal").textContent =
-          `Rp ${subtotal.toLocaleString("id-ID")}`;
-
-        // Hitung total harga dus packing
-        let totalBoxCost = 0;
-        let totalBoxesCount = 0;
-        Object.entries(boxCart).forEach(([bId, bQty]) => {
-          const box = boxPackingOptions.find((b) => b.id === bId);
-          if (box) {
-            totalBoxCost += box.price * bQty;
-            totalBoxesCount += bQty;
-          }
-        });
-
-        // Update teks ringkasan header opsi kemasan
-        const isPlastikChecked =
-          document.getElementById("packingPlastik")?.checked;
-        const summaryTextEl = document.getElementById("packingSummaryText");
-        let summaryParts = [];
-
-        if (isPlastikChecked) summaryParts.push("Plastik");
-        if (totalBoxesCount > 0) summaryParts.push(`${totalBoxesCount} Dus`);
-
-        if (summaryParts.length > 0) {
-          summaryTextEl.textContent = `Opsi Kemasan: ${summaryParts.join(" + ")} (Rp ${totalBoxCost.toLocaleString("id-ID")})`;
-        } else {
-          summaryTextEl.textContent = "Pilih Opsi Kemasan";
-        }
-
-        const grandTotal = subtotal + totalBoxCost;
-        document.getElementById("checkoutTotal").textContent =
-          `Rp ${grandTotal.toLocaleString("id-ID")}`;
-
-        // Render Ringkasan Checkout
-        const checkoutSummaryList = document.getElementById(
-          "checkoutSummaryList",
-        );
-        checkoutSummaryList.innerHTML = "";
-
-        Object.entries(cart).forEach(([id, qty]) => {
-          const item = menuData.find((m) => m.id == id);
-          if (!item) return;
-
-          const row = document.createElement("div");
-          row.className =
-            "flex justify-between items-center text-cappuccino-800";
-          row.innerHTML = `
-            <span>${item.name} (${qty} pcs)</span>
-            <span class="font-semibold">Rp ${(item.price * qty).toLocaleString("id-ID")}</span>
-          `;
-          checkoutSummaryList.appendChild(row);
-        });
-
-        // Tampilkan Plastik jika dicentang
-        if (isPlastikChecked) {
-          const plastikRow = document.createElement("div");
-          plastikRow.className =
-            "flex justify-between items-center text-cappuccino-700 pt-1 border-t border-cappuccino-200 mt-1 font-medium";
-          plastikRow.innerHTML = `
-            <span>Packing: Plastik</span>
-            <span class="text-green-600 font-semibold">Gratis</span>
-          `;
-          checkoutSummaryList.appendChild(plastikRow);
-        }
-
-        // Tampilkan rincian setiap Dus yang dibeli
-        Object.entries(boxCart).forEach(([bId, bQty]) => {
-          const box = boxPackingOptions.find((b) => b.id === bId);
-          if (box && bQty > 0) {
-            const boxRow = document.createElement("div");
-            boxRow.className =
-              "flex justify-between items-center text-cappuccino-700 pt-1 border-t border-cappuccino-200 mt-1 font-medium";
-            boxRow.innerHTML = `
-              <span>Packing: ${box.name} (${bQty}x)</span>
-              <span>Rp ${(box.price * bQty).toLocaleString("id-ID")}</span>
-            `;
-            checkoutSummaryList.appendChild(boxRow);
-          }
-        });
+      function closeAboutModal() {
+        document.getElementById("aboutModal")?.classList.add("hidden");
       }
 
       function openCheckoutModal() {
-        const totalQty = getTotalItemsCount();
+        let totalQty = 0;
+        Object.values(cart).forEach((q) => (totalQty += q));
+
         if (totalQty < MIN_ORDER_QTY) {
           showToast(
-            `Minimal pemesanan adalah ${MIN_ORDER_QTY} Pcs (Saat ini: ${totalQty} Pcs)`,
+            `Minimal pemesanan keseluruhan adalah ${MIN_ORDER_QTY} Pcs!`,
           );
           return;
         }
+
         toggleCartDrawer(false);
-        document.getElementById("checkoutModal").classList.remove("hidden");
-        document.getElementById("checkoutModal").classList.add("flex");
-        initDefaultDate();
-        renderBoxPackingOptions();
-        updateCartUI();
+        document.getElementById("checkoutModal")?.classList.remove("hidden");
+        document.getElementById("checkoutModal")?.classList.add("flex");
       }
 
       function closeCheckoutModal() {
-        document.getElementById("checkoutModal").classList.add("hidden");
-        document.getElementById("checkoutModal").classList.remove("flex");
+        document.getElementById("checkoutModal")?.classList.add("hidden");
+        document.getElementById("checkoutModal")?.classList.remove("flex");
       }
 
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toastMsg");
+        if (toast && toastMsg) {
+          toastMsg.innerText = msg;
+          toast.classList.remove("hidden");
+          setTimeout(() => {
+            toast.classList.add("hidden");
+          }, 3500);
+        }
+      }
+
+      // PROSES CHECKOUT & VALIDASI JAM AMBIL (05:00 - 11:00)
       function processCheckout() {
-        const name = document.getElementById("custName").value.trim();
-        const orderType = document.getElementById("orderType").value;
-        const pickupDate = document.getElementById("pickupDate").value;
-        const pickupTime = document.getElementById("pickupTime").value;
-        const paymentMethod = document.getElementById("paymentMethod").value;
-        const notes = document.getElementById("custNotes").value.trim();
+        const name = document.getElementById("custName")?.value.trim();
+        const date = document.getElementById("pickupDate")?.value;
+        const time = document.getElementById("pickupTime")?.value;
+        const orderType = document.getElementById("orderType")?.value;
+        const paymentMethod = document.getElementById("paymentMethod")?.value;
+        const notes = document.getElementById("custNotes")?.value.trim();
 
         if (!name) {
-          showToast("Mohon isi Nama Lengkap Anda!");
+          showToast("Mohon isi Nama Lengkap Pemesan!");
           return;
         }
-        if (!pickupDate || !pickupTime) {
-          showToast("Mohon isi Tanggal dan Jam Pengambilan!");
+        if (!date || !time) {
+          showToast("Mohon tentukan Tanggal & Jam Pengambilan!");
           return;
         }
+
+        // VALIDASI JAM PENGAMBILAN (Mulai 05:00 s/d Maksimal 11:00)
+        const [hours, minutes] = time.split(":").map(Number);
+        const timeInMinutes = hours * 60 + minutes;
+        const minTimeInMinutes = 5 * 60; // 05:00
+        const maxTimeInMinutes = 11 * 60; // 11:00
+
+        if (
+          timeInMinutes < minTimeInMinutes ||
+          timeInMinutes > maxTimeInMinutes
+        ) {
+          showToast(
+            "Jam pengambilan harus antara jam 05:00 Pagi sampai jam 11:00 Siang!",
+          );
+          return;
+        }
+
+        const isPlastik = document.getElementById("packingPlastik")?.checked;
+        let hasBox = false;
+        Object.values(boxCart).forEach((q) => {
+          if (q > 0) hasBox = true;
+        });
+
+        if (!isPlastik && !hasBox) {
+          showToast("Pilih minimal satu Opsi Kemasan (Plastik / Dus)!");
+          return;
+        }
+
+        // Render Semua Data Form ke Modal Konfirmasi
+        const confirmSummary = document.getElementById("confirmSummaryContent");
+        let itemSummaryHtml = "";
+        let subtotal = 0;
+
+        // Menu Pukis
+        Object.keys(cart).forEach((id) => {
+          const item = menuData.find((m) => m.id === parseInt(id));
+          const qty = cart[id];
+          subtotal += qty * item.price;
+          itemSummaryHtml += `
+            <div class="flex justify-between py-0.5">
+              <span>- ${item.name} (${qty}x)</span>
+              <b>${formatRupiah(qty * item.price)}</b>
+            </div>`;
+        });
+
+        // Opsi Kemasan dimasukkan langsung ke Rincian Menu pada Konfirmasi
+        let boxTotal = 0;
+        let boxText = [];
+
+        if (isPlastik) {
+          boxText.push("Plastik (Gratis)");
+          itemSummaryHtml += `
+            <div class="flex justify-between py-0.5">
+              <span>- Plastik</span>
+              <b>Rp 0</b>
+            </div>`;
+        }
+
+        Object.keys(boxCart).forEach((bId) => {
+          const q = boxCart[bId];
+          if (q > 0) {
+            const b = boxPackingOptions.find((x) => x.id === bId);
+            const totalB = q * b.price;
+            boxTotal += totalB;
+            boxText.push(`${b.name} (${q}x)`);
+
+            itemSummaryHtml += `
+              <div class="flex justify-between py-0.5">
+                <span>- ${b.name} (${q}x)</span>
+                <b>${formatRupiah(totalB)}</b>
+              </div>`;
+          }
+        });
+
+        confirmSummary.innerHTML = `
+          <div class="space-y-1.5 text-cappuccino-900">
+            <div class="border-b border-cappuccino-200 pb-2 space-y-1">
+              <p><b>Nama Pemesan:</b> ${name}</p>
+              <p><b>Opsi Pesanan:</b> ${orderType}</p>
+              <p><b>Tanggal Pengambilan:</b> ${date}</p>
+              <p><b>Jam Pengambilan:</b> Jam ${time}</p>
+              <p><b>Catatan Tambahan:</b> ${notes ? notes : "-"}</p>
+            </div>
+            
+            <div class="pt-1">
+              <p class="font-semibold text-cappuccino-800 mb-1">Rincian Menu:</p>
+              ${itemSummaryHtml}
+            </div>
+
+            <div class="border-t border-cappuccino-200 pt-2 mt-2 flex justify-between font-bold text-sm text-cappuccino-900">
+              <span>Total Pembayaran:</span>
+              <span class="text-cappuccino-700">${formatRupiah(subtotal + boxTotal)}</span>
+            </div>
+            <p><b>Metode Pembayaran:</b> ${paymentMethod}</p>
+          </div>`;
+
+        document.getElementById("confirmModal")?.classList.remove("hidden");
+      }
+
+      function closeConfirmModal() {
+        document.getElementById("confirmModal")?.classList.add("hidden");
+      }
+
+      function proceedToReceipt() {
+        closeConfirmModal();
+        closeCheckoutModal();
+
+        const name = document.getElementById("custName")?.value.trim();
+        const orderType = document.getElementById("orderType")?.value;
+        const date = document.getElementById("pickupDate")?.value;
+        const time = document.getElementById("pickupTime")?.value;
+        const paymentMethod = document.getElementById("paymentMethod")?.value;
+        const notes = document.getElementById("custNotes")?.value.trim();
+
+        const isPlastik = document.getElementById("packingPlastik")?.checked;
+        let packingLines = "";
+        let boxTotal = 0;
+
+        if (isPlastik) {
+          packingLines += `- Plastik = Rp 0\n`;
+        }
+
+        Object.keys(boxCart).forEach((bId) => {
+          const q = boxCart[bId];
+          if (q > 0) {
+            const b = boxPackingOptions.find((x) => x.id === bId);
+            const totalBoxPrice = q * b.price;
+            boxTotal += totalBoxPrice;
+            packingLines += `- ${b.name} (${q}x) = ${formatRupiah(totalBoxPrice)}\n`;
+          }
+        });
 
         const now = new Date();
-        const formattedDateNow = now.toLocaleDateString("id-ID", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        });
-        const formattedTimeNow = now.toLocaleTimeString("id-ID", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false,
-        });
-
-        const subtotal = getItemsSubtotal();
+        const timeStamp = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} ${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
 
         let itemLines = "";
-        Object.entries(cart).forEach(([id, qty]) => {
-          const item = menuData.find((m) => m.id == id);
-          if (item) {
-            itemLines += `- ${item.name} : ${qty} Pcs (Rp ${(item.price * qty).toLocaleString("id-ID")})\n`;
-          }
+        let subtotal = 0;
+        Object.keys(cart).forEach((id) => {
+          const item = menuData.find((m) => m.id === parseInt(id));
+          const qty = cart[id];
+          subtotal += qty * item.price;
+          itemLines += `- ${item.name} (${qty}x) = ${formatRupiah(qty * item.price)}\n`;
         });
 
-        // Susun rincian kemasan / packing
-        const isPlastikChecked =
-          document.getElementById("packingPlastik")?.checked;
-        let packingLines = "";
-        let totalBoxCost = 0;
+        const totalCost = subtotal + boxTotal;
 
-        if (isPlastikChecked) {
-          packingLines += `- Plastik (Gratis)\n`;
-        }
+        generatedFormattedOrder = `*KUE PUKIS BABA*
+Waktu Pesan: ${timeStamp} WIB
+----------------------------------
+*Nama Pemesan:* ${name}
+*Opsi Pesanan:* ${orderType}
+*Tgl & Jam Ambil:* ${date} (Jam ${time} WIB)
 
-        Object.entries(boxCart).forEach(([bId, bQty]) => {
-          const box = boxPackingOptions.find((b) => b.id === bId);
-          if (box && bQty > 0) {
-            const cost = box.price * bQty;
-            totalBoxCost += cost;
-            packingLines += `- ${box.name} (${bQty} Dus x Rp ${box.price.toLocaleString("id-ID")} = Rp ${cost.toLocaleString("id-ID")})\n`;
-          }
-        });
-
-        if (!packingLines) {
-          packingLines = "- Tanpa kemasan tambahan\n";
-        }
-
-        const grandTotal = subtotal + totalBoxCost;
-
-        // Catatan Khusus HANYA jika diisi
-        let notesSection = "";
-        if (notes) {
-          notesSection = `\n*Catatan Khusus:*\n${notes}\n`;
-        }
-
-        generatedFormattedOrder = `=================================
-*KUE PUKIS BABA*
-Waktu Pesan: ${formattedDateNow} [${formattedTimeNow} WIB]
-=================================
-
-*Informasi Pemesan:*
-- Nama: ${name}
-- Jenis Pesanan: ${orderType}
-- Tanggal & Jam Ambil: ${pickupDate} [${pickupTime} WIB]
-
-*Rincian Menu:*
+*RINCIAN MENU:*
 ${itemLines}
-*Opsi Kemasan / Packing:*
-${packingLines}
-*Rincian Biaya:*
-- Subtotal Menu: Rp ${subtotal.toLocaleString("id-ID")}
-- Total Biaya Kemasan: Rp ${totalBoxCost.toLocaleString("id-ID")}
----------------------------------
-*TOTAL PEMBAYARAN: Rp ${grandTotal.toLocaleString("id-ID")}*
-Metode Bayar: ${paymentMethod}
----------------------------------${notesSection}
-Terima kasih telah memesan di Kue Pukis Baba!
-=================================`;
+*RINCIAN KEMASAN:*
+${packingLines}----------------------------------
+*TOTAL PEMBAYARAN: ${formatRupiah(totalCost)}*
+*Metode Bayar:* ${paymentMethod}
+----------------------------------
+${notes ? `\n*Catatan:* ${notes}` : ""}
 
-        document.getElementById("receiptText").textContent =
-          generatedFormattedOrder;
-        closeCheckoutModal();
-        document.getElementById("receiptModal").classList.remove("hidden");
-        document.getElementById("receiptModal").classList.add("flex");
+Terima kasih telah memesan di Kue Pukis Baba!`;
+
+        const receiptText = document.getElementById("receiptText");
+        if (receiptText) receiptText.innerText = generatedFormattedOrder;
+
+        document.getElementById("receiptModal")?.classList.remove("hidden");
+        document.getElementById("receiptModal")?.classList.add("flex");
       }
 
       function backToCheckoutFromReceipt() {
-        document.getElementById("receiptModal").classList.add("hidden");
-        document.getElementById("receiptModal").classList.remove("flex");
-        document.getElementById("checkoutModal").classList.remove("hidden");
-        document.getElementById("checkoutModal").classList.add("flex");
+        document.getElementById("receiptModal")?.classList.add("hidden");
+        document.getElementById("receiptModal")?.classList.remove("flex");
+        openCheckoutModal();
       }
 
       function closeReceiptModal() {
-        document.getElementById("receiptModal").classList.add("hidden");
-        document.getElementById("receiptModal").classList.remove("flex");
+        document.getElementById("receiptModal")?.classList.add("hidden");
+        document.getElementById("receiptModal")?.classList.remove("flex");
       }
 
       function copyToClipboard() {
         if (!generatedFormattedOrder) return;
-        navigator.clipboard
-          .writeText(generatedFormattedOrder)
-          .then(() => {
-            showToast("Catatan pesanan berhasil disalin!");
-          })
-          .catch(() => {
-            showToast("Gagal menyalin catatan pesanan.");
-          });
+        navigator.clipboard.writeText(generatedFormattedOrder).then(() => {
+          showToast("Catatan pesanan berhasil disalin!");
+        });
       }
 
       function sendToWhatsApp() {
         if (!generatedFormattedOrder) return;
         const encodedText = encodeURIComponent(generatedFormattedOrder);
-        const waUrl = `https://wa.me/${RESTO_WA_NUMBER}?text=${encodedText}`;
-        window.open(waUrl, "_blank");
+        window.open(
+          `https://wa.me/${RESTO_WA_NUMBER}?text=${encodedText}`,
+          "_blank",
+        );
       }
-
-      // Initial Execution
-      document.addEventListener("DOMContentLoaded", () => {
-        renderMenu();
-        renderBoxPackingOptions();
-        updateCartUI();
-      });
     </script>
   </body>
 </html>
